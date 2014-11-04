@@ -1,6 +1,10 @@
-= link_to 'sign in with spotify', '/auth/spotify'
+- if current_user
+  Signed in as #{current_user.spotify_name}
+  = link_to 'Sign Out', signout_path
+-else
+  = link_to 'sign in with spotify', '/auth/spotify'
 - if @top != nil
-  - @top.first(10).each do |id, count|
+  - @top.each do |id, count|
     .row
       .col-md-12
         = RSpotify::Artist.find(id).name

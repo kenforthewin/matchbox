@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103174316) do
+ActiveRecord::Schema.define(version: 20141104162727) do
 
   create_table "users", force: true do |t|
-    t.text     "spotify_hash", limit: 255
+    t.text     "spotify_hash"
     t.string   "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "top_artists"
+    t.string   "spotify_name"
+    t.string   "spotify_id"
   end
 
 end

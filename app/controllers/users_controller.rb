@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
 
-	def spotify
+	def create
+		spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-		if(current_user.spotify_hash != nil)
-			spotify_user = RSpotify::User.new(current_user.spotify_hash)
+		if User.exists?(spotify_id: spotify_user.id)
+			@user = User.where(spotify_id: spotify_user.id).first
+			session[:current_user_id] = @user.id
+			return redirect_to root_path
 		end
 
-		if(spotify_user == nil)
-			spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-			current_user.spotify_hash = spotify_user.to_hash
-			current_user.save
-		end
+		@user = User.new
+		@user.spotify_hash = spotify_user.to_hash
+		@user.spotify_name = spotify_user.display_name
+		@user.spotify_id = spotify_user.id
 
 		playlists = spotify_user.playlists(limit: 50)
 
@@ -34,13 +36,24 @@ class UsersController < ApplicationController
 		end
 
 		@sorted = top.sort_by { |id, count| count }.reverse!
+		@sorted = @sorted.first(20)
 
-		current_user.top_artists = @sorted
-		current_user.save!
+		@user.top_artists = @sorted
+		@user.save
+
+		session[:current_user_id] = @user.id
+		redirect_to root_path
 	end
 
 	def home
-		@top = current_user.top_artists
+		if current_user != nil
+			@top = current_user.top_artists
+		end
+	end
+
+	def destroy
+		session[:current_user_id] = nil
+		redirect_to root_path
 	end
 
 

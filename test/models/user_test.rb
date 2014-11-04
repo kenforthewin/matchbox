@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id           :integer          not null, primary key
-#  spotify_hash :text(255)
+#  spotify_hash :text
 #  identifier   :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime

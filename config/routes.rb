@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  get '/auth/spotify/callback', to: 'users#spotify', as: :spotify
+  get '/auth/spotify/callback', to: 'users#create', as: :new_user
 
   root 'users#home'
 
+  get 'signout', to: 'users#destroy', as: :signout
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
