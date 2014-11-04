@@ -1,0 +1,5 @@
+- @sorted.first(10).each do |id, count|
+  .row
+    .col-md-12
+      = RSpotify::Artist.find(id).name
+      = count

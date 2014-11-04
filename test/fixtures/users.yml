@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id           :integer          not null, primary key
+#  spotify_hash :text(255)
+#  identifier   :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  top_artists  :text
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spotify_hash: MyString
+  identifier: MyString
+
+two:
+  spotify_hash: MyString
+  identifier: MyString
