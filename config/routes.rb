@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get 'signout', to: 'users#destroy', as: :signout
+
+  get 'account', to: 'users#account', as: :account
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

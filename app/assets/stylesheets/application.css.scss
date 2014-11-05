@@ -16,3 +16,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body { 
+	padding-top: 70px;
+	background-color: #C0C0C0;
+
+	width: auto;
+  	overflow-x: hidden;
+ }
+
+ img.album-small {
+ 	width: 200px;
+ 	height: 200px;
+ }

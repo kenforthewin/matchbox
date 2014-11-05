@@ -1,0 +1,17 @@
+- if @top != nil
+  .row
+    .col-md-12.col-md-offset-1
+      %h4 Your Top Artists
+  .row
+    .col-md-12
+      %hr
+  .row
+    - @top.each do |id, count|
+      .col-md-3
+        .well
+          .text-center
+            %b 
+              = RSpotify::Artist.find(id).name
+          .container
+            .span12
+              = image_tag(RSpotify::Artist.find(id).albums.first.images.first["url"], class: "album-small")

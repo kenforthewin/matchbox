@@ -8,6 +8,10 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  top_artists  :text
+#  spotify_name :string(255)
+#  spotify_id   :string(255)
+#  latitude     :float
+#  longitude    :float
 #
 
 require 'test_helper'

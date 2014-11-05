@@ -40,8 +40,8 @@ class UsersController < ApplicationController
 
 		@user.top_artists = @sorted
 		@user.save
-
 		session[:current_user_id] = @user.id
+
 		redirect_to root_path
 	end
 
@@ -49,6 +49,18 @@ class UsersController < ApplicationController
 		if current_user != nil
 			@top = current_user.top_artists
 		end
+	end
+
+	def account
+			@top = current_user.top_artists
+	end
+
+	def match
+		@user = current_user
+
+		@top = @user.top_artists
+
+		@matches = User.where
 	end
 
 	def destroy

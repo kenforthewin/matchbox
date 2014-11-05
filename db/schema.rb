@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104162727) do
+ActiveRecord::Schema.define(version: 20141105181114) do
+
+  create_table "locations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "users", force: true do |t|
     t.text     "spotify_hash"
@@ -21,6 +27,8 @@ ActiveRecord::Schema.define(version: 20141104162727) do
     t.text     "top_artists"
     t.string   "spotify_name"
     t.string   "spotify_id"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end
